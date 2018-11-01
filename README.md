@@ -1,2 +1,2 @@
 # magic-vue
-This repo focuses on vue learning.
+This repo is focusing on vue learning.
