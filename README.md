@@ -4,6 +4,7 @@
 
 # Component Sample
 * The 1st input sample with bootstrap, including Button, Text, Password, File, Checkox, Color, Date, Datetime, Email, Radio, Range, Submit, Url and Month.
+* Add text color, background color, badge and breadcrumb sample.
 *  Will continue to update more...
 
 ## Project setup
