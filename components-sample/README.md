@@ -1,6 +1,6 @@
 
 # magic vue.js
-* This is my vue.js repo. 
+* This repo is for vue components sample.
 
 ## Project setup
 ```
