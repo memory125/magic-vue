@@ -6,3 +6,5 @@
  * Add text color, background color, badge and breadcrumb sample.		
  *  Will continue to update more...
 
+ # Template Data Sample
+ * This sample is for data binding, which including data, computed, methods and filter properties.
