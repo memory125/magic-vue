@@ -1,5 +1,5 @@
 
-# magic vue.js
+# magic vue: components sample
 * This repo is for vue components sample.
 
 ## Project setup
