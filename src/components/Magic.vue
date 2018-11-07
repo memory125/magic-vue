@@ -2,6 +2,9 @@
   <div class="text-center p-3">
     <div class="button-group">
        <h1 class="bg-primary text-white p-3">
+         {{ msg }}
+        </h1>
+       <h1 class="bg-secondary text-info p-3">
          {{ message }}
         </h1>
         <button class="btn btn-secondary text-info p-3" v-on:click="handleClick">
