@@ -15,7 +15,40 @@
             <h3>High Price: {{hightotalPrice * 6.20 | currencyCNY}}</h3>
             <h3>Low Price: {{lowtotalPrice  | currencyUSD2(3)}}</h3>
             <h3>High Price: {{hightotalPrice | currencyUSD2(4)}}</h3>
-        </div> 
+        </div>
+        <div class="bg-primary text-white p-3">
+            <h3>Product:
+                <span v-text="name"></span>                    
+            </h3>
+            <h3 class="text-info">--- v-if test ---</h3>
+            <h4 v-if="showElements">Name: {{name}}</h4>
+            <h4 v-if="!showElements">Price: {{price}}</h4>
+            <h3 class="text-info">--- v-if v-else test---</h3>
+            <h4 v-if="showElements">Name: {{name}}</h4>
+            <h4 v-else>Price: {{price}}</h4>
+            <h3 class="text-info">--- v-if-else test---</h3>
+            <h4 v-if="counter % 3 == 0">Name: {{name}}</h4>
+            <h4 v-else-if="counter % 3 == 1">Price: {{price}}</h4>
+            <h4 v-else>Category: {{category}}</h4>
+            <ul class="text-left">
+                 <li>List item</li>
+                <template v-if="showElements">
+                    <li>{{ name }}</li>
+                    <li>{{ price }}</li>
+                </template>
+                <li>Other list item</li>
+            </ul>
+            <span v-html="fragment"></span>
+            <a></a>        
+        </div>
+        <div class="bg-primary text-white m-2 p-3">
+            <h3>
+            <button v-on:click="handleClick" class="btn btn-primary">
+                Click Me
+            </button>
+            </h3>
+            <h3> Message: {{msg}} </h3>
+        </div>
   </div>
 </template>
 
@@ -27,7 +60,12 @@ export default {
           name: "Apple",
           price: 275,
           lowtaxRate: 12,
-          hightaxRate: 20
+          hightaxRate: 20,
+          msg: "",
+          counter: 1,
+          fragment: '<div class="form-group">Password: <input class="form-group type="password"></div>',
+          showElements: true,
+          category: "Watersports"
       }
   },
   computed: {
@@ -42,6 +80,10 @@ export default {
       getTotalPrice(taxRate) {
           //return (this.price + (this.price * (taxRate / 100 ))).toFixed(2);
           return (this.price + (this.price * (taxRate / 100 )));
+      },
+      handleClick() {
+          this.msg = "Button Clicked - " + this.counter++;
+          this.showElements = !this.showElements;
       }
   },
   filters: {
