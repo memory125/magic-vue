@@ -1,7 +1,7 @@
 <template>
   <div class="bg-primary text-white text-center m-2 p-3">
-      <h3>This is my component!</h3>
-        <div class="bg-primary text-info p-3">
+      <h3 style="text-align:center">This is my component!</h3>
+        <div class="bg-primary text-info p-3" style="text-align:center">
             <!-- <h2>Product: {{name}}</h2> -->
             <h2>Product: {{name | reverse | capitalize}}</h2>
             <h2>Product: {{name | capitalize | reverse}}</h2>
@@ -16,7 +16,7 @@
             <h3>Low Price: {{lowtotalPrice  | currencyUSD2(3)}}</h3>
             <h3>High Price: {{hightotalPrice | currencyUSD2(4)}}</h3>
         </div>
-        <div class="bg-primary text-white p-3">
+        <div class="bg-primary text-white p-3" style="text-align:center">
             <h3>Product:
                 <span v-text="name"></span>                    
             </h3>
@@ -44,7 +44,7 @@
             <span v-html="fragment"></span>
             <a></a>        
         </div>
-        <div class="bg-primary text-white m-2 p-3">
+        <div class="bg-primary text-white m-2 p-3" style="text-align:center">
             <h3>
             <button v-on:click="handleClick" class="btn btn-primary">
                 Click Me
@@ -53,7 +53,16 @@
             <h3> Message: {{msg}} </h3>
         </div>
         <div class="bg-primary text-white m-2 p-3">
-          <h2 v-bind:class="elemClasses">Product: {{ name }}</h2>
+          <h3 v-bind:class="elemClasses1">Product: {{ name }}</h3>          
+          <h3 v-bind:class="elemClasses2" class="display-4">Name: {{ name }}</h3>
+          <button v-on:click="handleClick1" class="btn btn-primary">
+                Click 1
+          </button>
+          <button v-on:click="handleClick2" class="btn btn-primary">
+                Click 2
+           </button>
+          <h3 v-bind:style="elemStyles" class="disply-4">Product: {{ name }}</h3>  
+          <h3 v-bind:data-size="size" class="disply-4">Product: {{ name }}</h3>     
         </div>
   </div>
 </template>
@@ -72,7 +81,8 @@ export default {
           fragment: '<div class="form-group">Password: <input class="form-group type="password"></div>',
           showElements: true,
           category: "Watersports",
-          highlight: false
+          highlight1: false,
+          highlight2: false
       }
   },
   computed: {
@@ -82,8 +92,23 @@ export default {
       hightotalPrice() {
           return this.getTotalPrice(this.hightaxRate);
       },
-      elemClasses() {
-          return this.highlight ? ["bg-light", "text-dark", "display-4"] :  ["bg-dark", "text-light", "p-2"];
+      elemClasses1() {
+          return this.highlight1 ? ["bg-light", "text-dark", "display-4"] :  ["bg-dark", "text-light", "p-2"];
+      },
+      elemClasses2() {
+          return {
+              "text-dark": this.highlight1,
+              "bg-light": this.highlight2
+          }
+      },
+      elemStyles() {
+          return {
+              "border": "5px solid red",
+              "background-color": this.highlight2 ? "coral" : "green"
+          }
+      },
+      size() {
+          return this.highlight2 ? "big" : "small";
       }
   },
   methods: {
@@ -94,7 +119,14 @@ export default {
       handleClick() {
           this.msg = "Button Clicked - " + this.counter++;
           this.showElements = !this.showElements;
-          this.highlight = !this.highlight;
+          //this.highlight1 = !this.highlight1;
+          //this.highlight2 = !this.highlight2;
+      },
+       handleClick1() {                 
+          this.highlight1 = !this.highlight1;
+      },
+      handleClick2() {                 
+          this.highlight2 = !this.highlight2;
       }
   },
   filters: {
@@ -125,4 +157,6 @@ export default {
         padding: 10px;
         color: black;
     }
+    [data-size=big] {font-size: 40pt}
+    [data-size=small] {font-size: 20pt}
 </style>
