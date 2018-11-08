@@ -73,9 +73,9 @@
                     <th>Price</th>
                 </tr>
                 <tbody>
-                    <tr v-for="p in products">
-                        <td>Name</td>
-                        <td>Category</td>
+                    <tr v-for="p in products" v-bind:key="p">
+                        <td>{{p.name}}</td>
+                        <td>{{p.price}}</td>
                     </tr>
                 </tbody>
             </table>
