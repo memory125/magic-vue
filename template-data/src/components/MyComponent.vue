@@ -62,7 +62,8 @@
                 Click 2
            </button>
           <h3 v-bind:style="elemStyles" class="disply-4">Product: {{ name }}</h3>  
-          <h3 v-bind:data-size="size" class="disply-4">Product: {{ name }}</h3>     
+          <h3 v-bind:data-size="size" class="disply-4">Product: {{ name }}</h3>   
+           <h3 v-bind="attrValues" class="disply-4">Product: {{ name }}</h3>    
         </div>
   </div>
 </template>
@@ -109,6 +110,15 @@ export default {
       },
       size() {
           return this.highlight2 ? "big" : "small";
+      },
+      attrValues() {
+          return {
+              class: this.highlight2 ? ["bg-light", "text-dark"] : [],
+              style: {
+                  border: this.highlight2 ? "5px solid red" : ""
+              },
+              "data-size": this.highlight2 ? "big" : "small"
+          }
       }
   },
   methods: {
