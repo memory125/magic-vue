@@ -63,7 +63,8 @@
            </button>
           <h3 v-bind:style="elemStyles" class="disply-4">Product: {{ name }}</h3>  
           <h3 v-bind:data-size="size" class="disply-4">Product: {{ name }}</h3>   
-           <h3 v-bind="attrValues" class="disply-4">Product: {{ name }}</h3>    
+          <h3 v-bind="attrValues" class="disply-4">Product: {{ name }}</h3>
+          <h3 v-bind:text-content.prop="textContent"></h3>  
         </div>
   </div>
 </template>
@@ -119,7 +120,10 @@ export default {
               },
               "data-size": this.highlight2 ? "big" : "small"
           }
-      }
+      },
+       textContent() {
+           return this.highlight2 ? "Highlight!" : "Product: " + this.name;
+       }
   },
   methods: {
       getTotalPrice(taxRate) {
