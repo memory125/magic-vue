@@ -8,4 +8,4 @@
 
  # Template Data Sample
  * This sample is for data binding, which including data, computed, methods and filter properties.
- * Add directives: v-text, v-html, v-if, v-else, v-else-if, v-on data binding test. 
+ * Add directives: v-text, v-html, v-if, v-else, v-else-if, v-show, v-on data binding test. 

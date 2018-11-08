@@ -30,8 +30,11 @@
             <h4 v-if="counter % 3 == 0">Name: {{name}}</h4>
             <h4 v-else-if="counter % 3 == 1">Price: {{price}}</h4>
             <h4 v-else>Category: {{category}}</h4>
+            <h3 class="text-info">--- v-show test---</h3>
+            <h4 v-show="counter % 2 == 0">Name: {{name}}</h4>
+            <h4 v-show="counter % 2 == 1">Price: {{price}}</h4>            
             <ul class="text-left">
-                 <li>List item</li>
+                <li>List item</li>
                 <template v-if="showElements">
                     <li>{{ name }}</li>
                     <li>{{ price }}</li>
@@ -49,6 +52,9 @@
             </h3>
             <h3> Message: {{msg}} </h3>
         </div>
+        <div class="bg-primary text-white m-2 p-3">
+          <h2 v-bind:class="elemClasses">Product: {{ name }}</h2>
+        </div>
   </div>
 </template>
 
@@ -65,7 +71,8 @@ export default {
           counter: 1,
           fragment: '<div class="form-group">Password: <input class="form-group type="password"></div>',
           showElements: true,
-          category: "Watersports"
+          category: "Watersports",
+          highlight: false
       }
   },
   computed: {
@@ -74,6 +81,9 @@ export default {
       },
       hightotalPrice() {
           return this.getTotalPrice(this.hightaxRate);
+      },
+      elemClasses() {
+          return this.highlight ? ["bg-light", "text-dark", "display-4"] :  ["bg-dark", "text-light", "p-2"];
       }
   },
   methods: {
@@ -84,6 +94,7 @@ export default {
       handleClick() {
           this.msg = "Button Clicked - " + this.counter++;
           this.showElements = !this.showElements;
+          this.highlight = !this.highlight;
       }
   },
   filters: {
@@ -109,6 +120,9 @@ export default {
 </script>
 
 <style>
-#app {
-}
+    h3:first-child {
+        background-color: aquamarine;
+        padding: 10px;
+        color: black;
+    }
 </style>
