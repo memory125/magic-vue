@@ -63,8 +63,22 @@
            </button>
           <h3 v-bind:style="elemStyles" class="disply-4">Product: {{ name }}</h3>  
           <h3 v-bind:data-size="size" class="disply-4">Product: {{ name }}</h3>   
-          <h3 v-bind="attrValues" class="disply-4">Product: {{ name }}</h3>
-          <h3 v-bind:text-content.prop="textContent"></h3>  
+          <h3 v-bind="attrValues" class="disply-4">Product: {{ name }}</h3>    
+        </div>
+        <div class="container-fluid">
+            <h2 class="bg-primary text-white text-center p-3">Products</h2>
+            <table class="table table-sm table-bordered table-striped text-left">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                <tbody>
+                    <tr v-for="p in products">
+                        <td>Name</td>
+                        <td>Category</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
   </div>
 </template>
@@ -84,7 +98,12 @@ export default {
           showElements: true,
           category: "Watersports",
           highlight1: false,
-          highlight2: false
+          highlight2: false,
+          products: [
+              {name: "Pear", price: 38.9},
+              {name: "Apple", price: 48.95},
+              {name: "Orange", price: 32.99}
+          ]
       }
   },
   computed: {
@@ -120,10 +139,7 @@ export default {
               },
               "data-size": this.highlight2 ? "big" : "small"
           }
-      },
-       textContent() {
-           return this.highlight2 ? "Highlight!" : "Product: " + this.name;
-       }
+      }
   },
   methods: {
       getTotalPrice(taxRate) {
