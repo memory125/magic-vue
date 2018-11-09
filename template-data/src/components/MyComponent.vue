@@ -100,11 +100,16 @@
              <button v-on:click="handleFilter" class="btn btn-primary">
                 Filter
             </button>
+            <button v-on:click="handleUpdateData" class="btn btn-primary">
+                Update Data
+            </button>
         </div>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
   name: "MyComponent",
   data: function() {
@@ -187,6 +192,10 @@ export default {
       },
       handleFilter() {
           this.products = this.products.filter(p => p.price > 33);
+      },
+      handleUpdateData() {
+          //this.products[1] = {name: "Grapefruit", price: 38.99};
+          Vue.set(this.products, 1, {name: "Grapefruit", price: 38.99});
       }
   },
   filters: {
