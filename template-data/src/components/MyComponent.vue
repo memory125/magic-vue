@@ -73,12 +73,33 @@
                     <th>Price</th>
                 </tr>
                 <tbody>
-                    <tr v-for="p in products" v-bind:key="p">
-                        <td>{{p.name}}</td>
-                        <td>{{p.price}}</td>
+                    <tr v-for="p in products" v-bind:key="p.name">
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.price | currencyUSD1}}</td>
                     </tr>
                 </tbody>
             </table>
+            <button v-on:click="handlePush" class="btn btn-primary">
+                Push
+            </button>
+            <h2 class="bg-primary text-white text-center p-3">Products</h2>
+            <table class="table table-sm table-bordered table-striped text-left">
+                <tr>
+                    <th>Index</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                <tbody>
+                    <tr v-for="(p, i) in products" v-bind:key="p.name" v-bind:odd="i % 2 == 0">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.price | currencyUSD1}}</td>
+                    </tr>
+                </tbody>
+            </table>
+             <button v-on:click="handleFilter" class="btn btn-primary">
+                Filter
+            </button>
         </div>
   </div>
 </template>
@@ -100,9 +121,12 @@ export default {
           highlight1: false,
           highlight2: false,
           products: [
-              {name: "Pear", price: 38.9},
+              {name: "Pear", price: 39.9},
               {name: "Apple", price: 48.95},
-              {name: "Orange", price: 32.99}
+              {name: "Orange", price: 32.99},
+              {name: "Peach", price: 30.49},
+              {name: "Grape", price: 36.99},
+              {name: "Watermelon", price: 38.99}
           ]
       }
   },
@@ -157,6 +181,12 @@ export default {
       },
       handleClick2() {                 
           this.highlight2 = !this.highlight2;
+      },
+      handlePush() {
+          this.products.push(this.products.shift());
+      },
+      handleFilter() {
+          this.products = this.products.filter(p => p.price > 33);
       }
   },
   filters: {
@@ -189,4 +219,6 @@ export default {
     }
     [data-size=big] {font-size: 40pt}
     [data-size=small] {font-size: 20pt}
+    #tagged {background-color: coral}
+    [odd] {background-color: lightblue}
 </style>
