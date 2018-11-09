@@ -103,6 +103,77 @@
             <button v-on:click="handleUpdateData" class="btn btn-primary">
                 Update Data
             </button>
+            <table class="table table-sm table-bordered table-striped text-left">
+                <tr>
+                    <th>Index</th>                  
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                <tbody>
+                    <tr v-for="(p, key, i) in products2" v-bind:key="p.name">
+                        <td>{{ i + 1 }}</td>                       
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.price | currencyUSD1}}</td>
+                    </tr>
+                </tbody>           
+            </table>
+            <button v-on:click="handleSetData" class="btn btn-primary">
+                Set Data
+            </button>
+            <table class="table table-sm table-bordered table-striped text-left">
+                <tr>
+                    <th>Index</th>
+                    <th>Key</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                <tbody>
+                    <tr v-for="(p, key, i) in products3" v-bind:key="p.name">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ key }}</td>
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.price | currencyUSD1}}</td>
+                    </tr>
+                </tbody>           
+            </table>
+            <table class="table table-sm table-bordered table-striped text-left">
+                <tr>
+                    <th>Index</th>
+                    <th>Key</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                <tbody>
+                    <tr v-for="(p, key, i) in products3" v-bind:key="p.name">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ key }}</td>
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.price | currencyUSD1}}</td>
+                    </tr>
+                </tbody>           
+            </table>
+            <div class="text-center">
+                <button v-for="i in 5" v-on:click="handleBTNClick(i)" class="btn btn-primary m-1" v-bind:key="i">
+                    BTN {{ i }}
+                </button>
+            </div>
+             <table class="table table-sm table-bordered table-striped text-left">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                <tbody>
+                    <tr v-for="p in pageItems" v-bind:key="p.name">                      
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.price | currencyUSD1}}</td>
+                    </tr>
+                </tbody>           
+            </table>
+            <div class="text-center">
+                <button v-for="i in pageCount" v-on:click="selectPage(i)" class="btn btn-primary m-1" v-bind:key="i" v-bind:class="{'bg-primary': currentPage == i}">
+                    {{ i }}
+                </button>
+            </div>
         </div>
   </div>
 </template>
@@ -132,7 +203,37 @@ export default {
               {name: "Peach", price: 30.49},
               {name: "Grape", price: 36.99},
               {name: "Watermelon", price: 38.99}
-          ]
+          ],
+          products2: {
+              1: {name: "Pear", price: 39.9},
+              2: {name: "Apple", price: 48.95},
+              3: {name: "Orange", price: 32.99},
+              4: {name: "Peach", price: 30.49},
+              5: {name: "Grape", price: 36.99},
+              6: {name: "Watermelon", price: 38.99}
+          },
+          products3: {
+              "pear": {name: "Pear", price: 39.9},
+              2: {name: "Apple", price: 48.95},
+              3: {name: "Orange", price: 32.99},
+              4: {name: "Peach", price: 30.49},
+              "5": {name: "Grape", price: 36.99},
+              6: {name: "Watermelon", price: 38.99}
+          },
+          pageSize: 3,
+          currentPage: 1,
+          products4: [
+              {name: "Pear", price: 39.9},
+              {name: "Apple", price: 48.95},
+              {name: "Orange", price: 32.99},
+              {name: "Peach", price: 30.49},
+              {name: "Grape", price: 36.99},
+              {name: "Watermelon", price: 38.99},
+              {name: "Banana", price: 42.99},
+              {name: "Chestnut", price: 37.99},
+              {name: "Plum", price: 43.99},
+              {name: "Kiwi", price: 46.99},
+          ],
       }
   },
   computed: {
@@ -168,6 +269,13 @@ export default {
               },
               "data-size": this.highlight2 ? "big" : "small"
           }
+      },
+      pageCount() {
+          return Math.ceil(this.products4.length / this.pageSize);
+      },
+      pageItems() {
+          let start = (this.currentPage - 1) * this.pageSize;
+          return this.products4.slice(start, start + this.pageSize);
       }
   },
   methods: {
@@ -196,6 +304,12 @@ export default {
       handleUpdateData() {
           //this.products[1] = {name: "Grapefruit", price: 38.99};
           Vue.set(this.products, 1, {name: "Grapefruit", price: 38.99});
+      },
+      handleSetData() {
+           Vue.set(this.products2, 7, {name: "Banana", price: 42.99});
+      },
+      selectPage(page) {
+          this.currentPage = page;
       }
   },
   filters: {
