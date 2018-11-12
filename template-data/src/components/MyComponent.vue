@@ -163,14 +163,37 @@
                     <th>Price</th>
                 </tr>
                 <tbody>
-                    <tr v-for="p in pageItems" v-bind:key="p.name">                      
+                    <tr v-for="p in pageItems1" v-bind:key="p.name">                      
                         <td>{{ p.name }}</td>
                         <td>{{ p.price | currencyUSD1}}</td>
                     </tr>
                 </tbody>           
             </table>
             <div class="text-center">
-                <button v-for="i in pageCount" v-on:click="selectPage(i)" class="btn btn-primary m-1" v-bind:key="i" v-bind:class="{'bg-primary': currentPage == i}">
+                <button v-for="i in pageCount1" v-on:click="selectPage(i)" class="btn btn-primary m-1" v-bind:key="i" v-bind:class="{'bg-primary': currentPage == i}">
+                    {{ i }}
+                </button>
+            </div>
+            <table class="table table-sm table-bordered table-striped text-left">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                <tbody>
+                    <tr v-for="p in pageItems2" v-bind:key="p.name">                      
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.price | currencyUSD1}}</td>
+                    </tr>
+                </tbody>           
+            </table>
+            <div class="text-center">
+                <button class="btn btn-secondary m-1" v-on:click="togg;eSort"  v-bind:class="{'bg-primary': sort}">
+                    Toggle Sort
+                </button>
+                <button class="btn btn-secondary m-1" v-on:click="toggleFilter"  v-bind:class="{'bg-primary': sort}">
+                    Toggle Filter
+                </button>
+                <button v-for="i in pageCount1" v-on:click="selectPage(i)" class="btn btn-primary m-1" v-bind:key="i" v-bind:class="{'bg-primary': currentPage == i}">
                     {{ i }}
                 </button>
             </div>
@@ -234,6 +257,21 @@ export default {
               {name: "Plum", price: 43.99},
               {name: "Kiwi", price: 46.99},
           ],
+          filter: false,
+          sort: false,
+          products5: [
+              {name: "Pear", price: 39.9},
+              {name: "Apple", price: 48.95},
+              {name: "Orange", price: 32.99},
+              {name: "Peach", price: 30.49},
+              {name: "Grape", price: 36.99},
+              {name: "Watermelon", price: 38.99},
+              {name: "Banana", price: 42.99},
+              {name: "Chestnut", price: 37.99},
+              {name: "Plum", price: 43.99},
+              {name: "Kiwi", price: 46.99},
+              {name: "Pitaya", price: 49.99}
+          ]
       }
   },
   computed: {
@@ -270,12 +308,23 @@ export default {
               "data-size": this.highlight2 ? "big" : "small"
           }
       },
-      pageCount() {
+      pageCount1() {
           return Math.ceil(this.products4.length / this.pageSize);
       },
-      pageItems() {
+      pageItems1() {
           let start = (this.currentPage - 1) * this.pageSize;
           return this.products4.slice(start, start + this.pageSize);
+      },
+      pageCount2() {
+          return Math.ceil(this.dataItems.length / this.pageSize);
+      },
+      pageItems2() {
+          let start = (this.currentPage - 1) * this.pageSize;
+          return this.dataItems.slice(start, start + this.pageSize);
+      },
+      dataItems() {
+          let data = this.fileter ? this.products5.filter(p => p.price > 30) : this.products5;
+          return this.sort ? data.concat().sort((p1, p2) => p2.price - p1.price) : data;
       }
   },
   methods: {
@@ -310,6 +359,14 @@ export default {
       },
       selectPage(page) {
           this.currentPage = page;
+      },
+      toggleSort() {
+          this.sort = !this.sort;
+          this.currentPage = 1;
+      },
+      toggleFilter() {
+          this.filter = !this.filter;
+          this.currentPage = 1;
       }
   },
   filters: {
