@@ -9,4 +9,4 @@
  # Template Data Sample
  * This sample is for data binding, which including data, computed, methods and filter properties.
  * Add directives: v-text, v-html, v-if, v-else, v-else-if, v-show, v-on data binding test. 
- * Add v-for directive, table component, array property.
+ * Add v-for directive, table, button component, array property and even click event.
