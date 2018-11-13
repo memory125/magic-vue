@@ -104,6 +104,12 @@
                     </div>
             </div>
         </div>
+        <div class="container-fluid9">
+            <div class="bg-primary p-4 text-white h3">
+                {{message8}}
+            </div>
+            <input class="form-control bg-light" placeholder="Type here..." v-on:keydown="handleKey"/>
+        </div>
   </div>
 </template>
 
@@ -129,7 +135,8 @@ export default {
           message4: "Self Event",
           message5: "Stop Event",
           message6: "Once Event",
-          message7: "MouseDown Right Event"
+          message7: "MouseDown Right Event",
+          message8: "Ready"
       }
   },
   methods: {
@@ -187,6 +194,9 @@ export default {
       handleClick7($event) {
           //console.log("handleClick2 target: " + $event.target.id + "CurrentTarget: " + $event.currentTarget.id);
           this.message7 = "handleClick7 Mousedown Right target: " + $event.target.id + " CurrentTarget: " + $event.currentTarget.id;
+      },
+      handleKey($event) {
+          this.message8 = $event.key;
       }
   }
 }
