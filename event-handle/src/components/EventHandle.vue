@@ -44,13 +44,61 @@
                     </div>
             </div>
         </div>
-        <div class="container-fluid3">
+        <div class="container-fluid4">
             <h2 class="bg-primary text-white text-center mt-2 p-2">{{ message3 }}</h2>
             <div id="outer-element" class="bg-primary p-4 text-white h3" v-on:click.capture="handleClick3">
                 Outer Element
                     <div id="middle-element" class="bg-secondary p-4" v-on:click.capture="handleClick3">
                         Middle Element
                             <div id="inner-element" class="bg-info p-4" v-on:click="handleClick3">
+                                Inner Element
+                            </div>
+                    </div>
+            </div>
+        </div>
+        <div class="container-fluid5">
+            <h2 class="bg-primary text-white text-center mt-2 p-2">{{ message4 }}</h2>
+            <div id="outer-element" class="bg-primary p-4 text-white h3" v-on:click.capture="handleClick4">
+                Outer Element
+                    <div id="middle-element" class="bg-secondary p-4" v-on:click.self="handleClick4">
+                        Middle Element
+                            <div id="inner-element" class="bg-info p-4" v-on:click="handleClick4">
+                                Inner Element
+                            </div>
+                    </div>
+            </div>
+        </div>
+        <div class="container-fluid6">
+            <h2 class="bg-primary text-white text-center mt-2 p-2">{{ message5 }}</h2>
+            <div id="outer-element" class="bg-primary p-4 text-white h3" v-on:click.capture="handleClick5">
+                Outer Element
+                    <div id="middle-element" class="bg-secondary p-4" v-on:click.stop="handleClick5">
+                        Middle Element
+                            <div id="inner-element" class="bg-info p-4" v-on:click="handleClick5">
+                                Inner Element
+                            </div>
+                    </div>
+            </div>
+        </div>
+        <div class="container-fluid7">
+            <h2 class="bg-primary text-white text-center mt-2 p-2">{{ message6 }}</h2>
+            <div id="outer-element" class="bg-primary p-4 text-white h3" v-on:click.capture="handleClick6">
+                Outer Element
+                    <div id="middle-element" class="bg-secondary p-4" v-on:click.stop="handleClick6">
+                        Middle Element
+                            <div id="inner-element" class="bg-info p-4" v-on:click.once="handleClick6">
+                                Inner Element
+                            </div>
+                    </div>
+            </div>
+        </div>
+        <div class="container-fluid8">
+            <h2 class="bg-primary text-white text-center mt-2 p-2">{{ message7 }}</h2>
+            <div id="outer-element" class="bg-primary p-4 text-white h3" v-on:mousedown="handleClick7">
+                Outer Element
+                    <div id="middle-element" class="bg-secondary p-4" v-on:mousedown="handleClick7">
+                        Middle Element
+                            <div id="inner-element" class="bg-info p-4" v-on:mousedown.right="handleClick7">
                                 Inner Element
                             </div>
                     </div>
@@ -77,7 +125,11 @@ export default {
               mouseleave: this.handleMouseEvent2
           },
           message2: "Bubble Event",
-          message3: "Capture Event"
+          message3: "Capture Event",
+          message4: "Self Event",
+          message5: "Stop Event",
+          message6: "Once Event",
+          message7: "MouseDown Right Event"
       }
   },
   methods: {
@@ -114,11 +166,27 @@ export default {
       },
       handleClick2($event) {
           //console.log("handleClick2 target: " + $event.target.id + "CurrentTarget: " + $event.currentTarget.id);
-          this.message2 = "handleClick2 target: " + $event.target.id + " CurrentTarget: " + $event.currentTarget.id;
+          this.message2 = "handleClick2 Bubble target: " + $event.target.id + " CurrentTarget: " + $event.currentTarget.id;
       },
       handleClick3($event) {
           //console.log("handleClick2 target: " + $event.target.id + "CurrentTarget: " + $event.currentTarget.id);
           this.message3 = "handleClick3 Capture target: " + $event.target.id + " CurrentTarget: " + $event.currentTarget.id;
+      },
+      handleClick4($event) {
+          //console.log("handleClick2 target: " + $event.target.id + "CurrentTarget: " + $event.currentTarget.id);
+          this.message4 = "handleClick4 Self target: " + $event.target.id + " CurrentTarget: " + $event.currentTarget.id;
+      },
+      handleClick5($event) {
+          //console.log("handleClick2 target: " + $event.target.id + "CurrentTarget: " + $event.currentTarget.id);
+          this.message5 = "handleClick5 Stop target: " + $event.target.id + " CurrentTarget: " + $event.currentTarget.id;
+      },
+      handleClick6($event) {
+          //console.log("handleClick2 target: " + $event.target.id + "CurrentTarget: " + $event.currentTarget.id);
+          this.message6 = "handleClick6 Once target: " + $event.target.id + " CurrentTarget: " + $event.currentTarget.id;
+      },
+      handleClick7($event) {
+          //console.log("handleClick2 target: " + $event.target.id + "CurrentTarget: " + $event.currentTarget.id);
+          this.message7 = "handleClick7 Mousedown Right target: " + $event.target.id + " CurrentTarget: " + $event.currentTarget.id;
       }
   }
 }
