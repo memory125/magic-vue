@@ -44,6 +44,18 @@
                     </div>
             </div>
         </div>
+        <div class="container-fluid3">
+            <h2 class="bg-primary text-white text-center mt-2 p-2">{{ message3 }}</h2>
+            <div id="outer-element" class="bg-primary p-4 text-white h3" v-on:click.capture="handleClick3">
+                Outer Element
+                    <div id="middle-element" class="bg-secondary p-4" v-on:click.capture="handleClick3">
+                        Middle Element
+                            <div id="inner-element" class="bg-info p-4" v-on:click="handleClick3">
+                                Inner Element
+                            </div>
+                    </div>
+            </div>
+        </div>
   </div>
 </template>
 
@@ -64,7 +76,8 @@ export default {
               mousemove: this.handleMouseEvent2,
               mouseleave: this.handleMouseEvent2
           },
-          message2: "Nothing"
+          message2: "Bubble Event",
+          message3: "Capture Event"
       }
   },
   methods: {
@@ -102,6 +115,10 @@ export default {
       handleClick2($event) {
           //console.log("handleClick2 target: " + $event.target.id + "CurrentTarget: " + $event.currentTarget.id);
           this.message2 = "handleClick2 target: " + $event.target.id + " CurrentTarget: " + $event.currentTarget.id;
+      },
+      handleClick3($event) {
+          //console.log("handleClick2 target: " + $event.target.id + "CurrentTarget: " + $event.currentTarget.id);
+          this.message3 = "handleClick3 Capture target: " + $event.target.id + " CurrentTarget: " + $event.currentTarget.id;
       }
   }
 }
