@@ -13,3 +13,6 @@
 
 # Event Handle Sample
 * This sample is for event handling. e.g. click, mousedown, mousemove, mouseleave, keydown.
+
+# Model Sample
+* This sample is for model handling. e.g. form-check, form-control.
