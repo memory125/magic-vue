@@ -170,7 +170,7 @@
         </div>        
     </div>
     <div v-for="city in cityNames" v-bind:key="city">
-        <h3 class="p-1"></h3>
+        <h3 class="p-1"></h3>        
     </div>
     <div class="container-fluid-8">
         <div class="m-2 p-2 text-white" v-bind:class="elemClass">
