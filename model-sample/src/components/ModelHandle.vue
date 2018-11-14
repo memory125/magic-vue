@@ -60,6 +60,43 @@
             Reset3
         </button>
     </div>
+    <div class="bg-info m-2 p-2 text-white">
+        <div>Name: {{ name }}</div>
+        <div>Password: {{ password }}</div>
+        <div>Details: {{ details }}</div>
+    </div>
+    <div class="bg-primary m-2 p-2 text-white">
+        <div class="form-group">            
+            <label>Name</label>
+            <input class="form-control" v-model="name" />           
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" v-model="password" />
+        </div>
+        <div class="form-group">
+            <label>Details</label>
+            <textarea class="form-control" v-model="details" />
+        </div>
+    </div>
+    <div class="bg-info m-2 p-2 text-white">
+        <div>Name: {{ name }}</div>
+        <div>Has Admin Access: {{ hasAdminAccess }}</div>
+    </div>
+    <div class="bg-primary m-2 p-2 text-white">
+        <div class="form-check">            
+            <input class="form-check-input" type="radio" v-model="name" value="David" />
+            <label class="form-check-label">David</label>         
+        </div>
+       <div class="form-check">            
+            <input class="form-check-input" type="radio" v-model="name" value="Alice" />
+            <label class="form-check-label">Alice</label>         
+        </div>
+        <div class="form-check">            
+            <input class="form-check-input" type="checkbox" v-model="hasAdminAccess" />
+            <label class="form-check-label">Has Admin Access?</label>         
+        </div>
+    </div>
   </div>
 </template>
 
@@ -75,7 +112,11 @@ export default {
           dataValue2: false,
           dataValue3: false,
           otherValue1: "",
-          otherValue2: ""
+          otherValue2: "",
+          name: "David",
+          password: "123456",
+          details: "Has admin access",
+          hasAdminAccess: true
       }
   },
   methods: {
