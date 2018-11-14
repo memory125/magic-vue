@@ -97,7 +97,7 @@
             <label class="form-check-label">Has Admin Access?</label>         
         </div>
     </div>
-    <div class="container-fluid-2">
+    <div class="container-fluid">
         <div class="bg-info m-2 p-2 text-white">
             <div>Name: {{ name }}</div>
         </div>
@@ -108,7 +108,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid-3">
+    <div class="container-fluid">
         <div class="bg-info m-2 p-2 text-white">
             <div>Name: {{ name }}</div>
         </div>
@@ -124,7 +124,7 @@
             </div>            
         </div>
     </div>
-    <div class="container-fluid-4">
+    <div class="container-fluid">
         <div class="bg-info m-2 p-2 text-white">
             <div>Amount: {{ amount }}, Amount + 10 = {{ amount + 10 }}</div>
         </div>
@@ -134,7 +134,7 @@
             <!-- <input type="number" class="form-control" v-model.number.lazy="amount" /> -->
         </div>
     </div>
-    <div class="container-fluid-5">
+    <div class="container-fluid">
         <div class="bg-info m-2 p-2 text-white">
             <div>Name: **{{name}}** </div>
         </div>
@@ -143,7 +143,7 @@
             <input type="text" class="form-control" v-model.trim="name" />           
         </div>
     </div>
-    <div class="container-fluid-6">
+    <div class="container-fluid">
         <div class="bg-info m-2 p-2 text-white">
             <div>Selected Cities: {{ cities }}</div>
         </div>
@@ -159,7 +159,7 @@
             </button>
         </div>
     </div>
-    <div class="container-fluid-7">
+    <div class="container-fluid">
         <div class="form-control">
             <label>City: {{cityLen}}</label>
             <select multiple class="form-control" v-model="cities">
@@ -172,7 +172,7 @@
     <div v-for="city in cityNames" v-bind:key="city">
         <h3 class="p-1"></h3>        
     </div>
-    <div class="container-fluid-8">
+    <div class="container-fluid">
         <div class="m-2 p-2 text-white" v-bind:class="elemClass">
             <div>Value: {{ elemClass }}</div>
         </div>
