@@ -97,6 +97,43 @@
             <label class="form-check-label">Has Admin Access?</label>         
         </div>
     </div>
+    <div class="container-fluid-2">
+        <div class="bg-info m-2 p-2 text-white">
+            <div>Name: {{ name }}</div>
+        </div>
+        <div class="bg-primary m-2 p-2 text-white">
+            <div class="form-check" v-for="n in allNames" v-bind:key="n">
+                <input type="radio" class="form-check-input" v-model="name" v-bind:value="n" />
+                <label class="form-check-label">{{ n }}</label>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid-3">
+        <div class="bg-info m-2 p-2 text-white">
+            <div>Name: {{ name }}</div>
+        </div>
+        <div class="bg-primary m-2 p-2 text-white">
+            <div class="form-group">
+                <label>Selected Names</label>
+                <select class="form-control" v-model="name">
+                    <option value="all">Everyone</option>
+                    <option v-for="n in allNames" v-bind:key="n" v-bind:value="n">
+                        Just {{n}}
+                    </option>
+                </select>
+            </div>            
+        </div>
+    </div>
+    <div class="container-fluid-4">
+        <div class="bg-info m-2 p-2 text-white">
+            <div>Amount: {{ amount }}, Amount + 10 = {{ amount + 10 }}</div>
+        </div>
+        <div class="form-group">
+            <label>Amount</label>
+            <input type="number" class="form-control" v-model.number="amount" />
+            <!-- <input type="number" class="form-control" v-model.number.lazy="amount" /> -->
+        </div>
+    </div>
   </div>
 </template>
 
@@ -116,7 +153,9 @@ export default {
           name: "David",
           password: "123456",
           details: "Has admin access",
-          hasAdminAccess: true
+          hasAdminAccess: true,
+          allNames: ["David", "Alice", "Joe"],
+          amount: 100
       }
   },
   methods: {
