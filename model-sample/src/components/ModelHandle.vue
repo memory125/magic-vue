@@ -134,6 +134,55 @@
             <!-- <input type="number" class="form-control" v-model.number.lazy="amount" /> -->
         </div>
     </div>
+    <div class="container-fluid-5">
+        <div class="bg-info m-2 p-2 text-white">
+            <div>Name: **{{name}}** </div>
+        </div>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" v-model.trim="name" />           
+        </div>
+    </div>
+    <div class="container-fluid-6">
+        <div class="bg-info m-2 p-2 text-white">
+            <div>Selected Cities: {{ cities }}</div>
+        </div>
+        <div class="form-check m-2" v-for="city in cityNames" v-bind:key="city">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" v-model="cities" v-bind:value="city" />
+                {{ city }}
+            </label>                    
+        </div>
+        <div class="text-center">
+            <button v-on:click="reset4" class="btn btn-info">
+                Reset4
+            </button>
+        </div>
+    </div>
+    <div class="container-fluid-7">
+        <div class="form-control">
+            <label>City: {{cityLen}}</label>
+            <select multiple class="form-control" v-model="cities">
+                <option v-for="city in cityNames" v-bind:key="city">
+                    {{city}}
+                </option>
+            </select>
+        </div>        
+    </div>
+    <div v-for="city in cityNames" v-bind:key="city">
+        <h3 class="p-1"></h3>
+    </div>
+    <div class="container-fluid-8">
+        <div class="m-2 p-2 text-white" v-bind:class="elemClass">
+            <div>Value: {{ elemClass }}</div>
+        </div>
+        <div class="form-check m-2">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" v-model="dataValue4" />
+                Dark Color
+            </label>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -155,7 +204,18 @@ export default {
           details: "Has admin access",
           hasAdminAccess: true,
           allNames: ["David", "Alice", "Joe"],
-          amount: 100
+          amount: 100,
+          cityNames: ["London", "New York", "Paris", "Berlin", "Seattle", "Washington", "Beijing", "Munich"],
+          cities: [],
+          dataValue4: false
+      }
+  },
+  computed: {
+      elemClass() {
+          return this.dataValue4 ? "bg-primary" : "bg-info";
+      },
+      cityLen() {
+          return this.cityNames.length;
       }
   },
   methods: {
@@ -179,6 +239,9 @@ export default {
       reset3() {
           this.dataValue3 = false;
           this.otherValue2 = "";
+      },
+      reset4() {
+          this.cities = [];
       }
   }
 }

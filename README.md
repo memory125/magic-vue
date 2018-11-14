@@ -15,4 +15,4 @@
 * This sample is for event handling. e.g. click, mousedown, mousemove, mouseleave, keydown.
 
 # Model Sample
-* This sample is for model binding ( one-way & two-way) or handling. e.g. form-check, form-control.
+* This sample is for model binding ( one-way & two-way) or handling. e.g. form-check, form-control. form-group.
