@@ -7,18 +7,21 @@
       <div class="form-group m-1">
           <input v-model="message" class="form-control" />
       </div>
+      <div class="form-group m-1 text-left">
+          <label>{{ labelText }}</label>
+          <input v-model="message" class="form-control" />
+      </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'ChildComponent',
-  props: {
-    msg: String
-  },
+  props: ["labelText", "initialValue"],
   data() {
       return {
-        message: "This is the child component!"
+          //message: "This is child component!"
+          message: this.initialValue     
       }
   }
 }

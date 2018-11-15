@@ -6,8 +6,8 @@
       </div>  
       <ChildComponent></ChildComponent>
       <child-component></child-component>
-      <MyFeature></MyFeature>
-      <my-feature></my-feature>
+      <MyFeature labelText="Name" initialValue="Apple"></MyFeature>
+      <my-feature label-text="Category" initial-value="Banana"></my-feature>
   </div>
 </template>
 
