@@ -183,6 +183,45 @@
             </label>
         </div>
     </div>
+    <div class="container-fluid">
+        <div class="m-2 p-2 text-white" v-bind:class="dataValue5">
+            <div>Value: {{ dataValue5 }}</div>
+        </div>
+         <div class="form-check m-2">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" v-model="dataValue5" true-value="bg-primary" false-value="bg-info" />
+                Dark Color
+            </label>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="m-2 p-2 text-white" v-bind:class="dataValue6">
+            <div>Value: {{ dataValue6 }}</div>
+        </div>
+        <div class="form-check m-2">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" v-model="dataValue6" v-bind:true-value="darkColor" v-bind:false-value="lightColor" />
+                Dark Color
+            </label>
+        </div>
+        <div class="form-group m-2 p-2 bg-secondary">
+            <label>Color</label>
+            <select v-model="dataValue6" class="form-control">
+                <option v-bind:value="darkColor">Dark Color</option>
+                <option v-bind:value="lightColor">Light Color</option>
+            </select>
+        </div>
+        <div class="form-check-inline m-2">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" v-model="dataValue6" v-bind:value="darkColor" />
+                Dark Color
+            </label>             
+            <label class="form-check-label p-3">
+                <input type="radio" class="form-check-input" v-model="dataValue6" v-bind:value="lightColor" />
+                Light Color
+            </label>        
+        </div>
+    </div>
   </div>
 </template>
 
@@ -207,7 +246,11 @@ export default {
           amount: 100,
           cityNames: ["London", "New York", "Paris", "Berlin", "Seattle", "Washington", "Beijing", "Munich"],
           cities: [],
-          dataValue4: false
+          dataValue4: false,
+          dataValue5: "bg-info",
+          darkColor: "bg-primary",
+          lightColor: "bg-info",
+          dataValue6: "bg-success"
       }
   },
   computed: {
