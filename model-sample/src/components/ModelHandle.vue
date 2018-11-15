@@ -240,7 +240,7 @@
             Price: {{ pprice }}
         </div>
 
-        <form v-on:submit.prevent="handleSubmit">
+        <form v-on:submit.prevent="handleSubmit1">
             <div class="form-group">
                 <label>Name</label>
                 <input v-model="pname" class="form-control" />
@@ -255,11 +255,47 @@
             </div>
             <div class="text-center">
                 <button class="btn btn-primary" type="submit">
-                    Submit
+                    Submit1
                 </button>
             </div>
-        </form>
-        
+        </form>        
+    </div>
+    <div class="container-fluid">
+        <div class="bg-danger text-white my-2 p-2" v-if="errors">
+            <h5>The following problems have been found:</h5>
+            <ul>
+                <template v-for="(errors) in validationErrors">
+                    <li v-for="error in errors" v-bind:key="error">
+                        {{ error }}
+                    </li>
+                </template>
+            </ul>
+        </div>
+        <div class="btn-primary m-2 p-2 text-white" v-bind:class="dataValue5">
+            Name: {{ name2 }},
+            Category: {{ category2 }},
+            Price: {{ price2 }}
+        </div>
+
+        <form v-on:submit.prevent="handleSubmit2">
+            <div class="form-group">
+                <label>Name</label>
+                <input v-model="name2" class="form-control" />
+            </div>
+             <div class="form-group">
+                <label>Category</label>
+                <input v-model="category2" class="form-control" />
+            </div>        
+             <div class="form-group">
+                <label>Price</label>
+                <input type="number" v-model.number="price2" class="form-control" />
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit">
+                    Submit2
+                </button>
+            </div>
+        </form>        
     </div>
   </div>
 </template>
@@ -298,6 +334,18 @@ export default {
           pcategory: "",
           pprice: 0,
           validationErrors: {},
+          hasSubmitted: false
+      }
+  },
+  watch: {
+      name2(value) {
+          this.validataWatch("name", value)
+      },
+      category2(value) {
+          this.validataWatch("category", value)
+      },
+      price2(value) {
+           this.validataWatch("price", value)
       }
   },
   computed: {
@@ -336,7 +384,13 @@ export default {
       reset4() {
           this.cities = [];
       },
-      handleSubmit() {
+      handleSubmit1() {
+          if (this.validateAll()) {
+               //console.log("Form Submitted: " + this.pname + " - " + this.pcategory + " - " + this.pprice);
+          }         
+      },
+      handleSubmit2() {
+          this.handleSubmit2 = true;
           if (this.validateAll()) {
                //console.log("Form Submitted: " + this.pname + " - " + this.pcategory + " - " + this.pprice);
           }         
@@ -359,6 +413,11 @@ export default {
           this.validate("category", this.pcategory);
           this.validate("price", this.pprice);
           return this.errors;
+      },
+      validataWatch(propertyName, value) {
+          if (this.hasSubmitted) {
+              this.validate(propertyName, value);
+          }
       }
   }
 }

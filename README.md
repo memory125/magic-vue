@@ -16,3 +16,4 @@
 
 # Model Sample
 * This sample is for model binding ( one-way & two-way) or handling. e.g. form-check, form-control. form-group.
+* Add watch property.
