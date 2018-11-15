@@ -19,4 +19,4 @@
 * Add watch property.
 
 # Components Data Sample
-* This sample if for data or attributes delivery between different pages.
+* This sample is for data or attributes delivery between different pages.
