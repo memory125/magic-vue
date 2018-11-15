@@ -224,6 +224,16 @@
     </div>
     <h1>Store Sample Snippet</h1>
     <div class="container-fluid">
+        <div class="bg-danger text-white my-2 p-2" v-if="errors">
+            <h5>The following problems have been found:</h5>
+            <ul>
+                <template v-for="(errors) in validationErrors">
+                    <li v-for="error in errors" v-bind:key="error">
+                        {{ error }}
+                    </li>
+                </template>
+            </ul>
+        </div>
         <div class="btn-primary m-2 p-2 text-white" v-bind:class="dataValue5">
             Name: {{ pname }},
             Category: {{ pcategory }},
@@ -255,6 +265,10 @@
 </template>
 
 <script>
+
+import validation from "../validationRules";
+import Vue from "vue";
+
 export default {
   name: 'ModelHandle',
   props: {
@@ -282,7 +296,8 @@ export default {
           dataValue6: "bg-success",
           pname: "",
           pcategory: "",
-          pprice: 0
+          pprice: 0,
+          validationErrors: {},
       }
   },
   computed: {
@@ -291,6 +306,9 @@ export default {
       },
       cityLen() {
           return this.cityNames.length;
+      },
+      errors() {
+          return Object.values(this.validationErrors).length > 0;
       }
   },
   methods: {
@@ -319,7 +337,28 @@ export default {
           this.cities = [];
       },
       handleSubmit() {
-          //console.log("Form Submitted: " + this.pname + " - " + this.pcategory + " - " + this.pprice);
+          if (this.validateAll()) {
+               //console.log("Form Submitted: " + this.pname + " - " + this.pcategory + " - " + this.pprice);
+          }         
+      },
+      validate(propertyName, value) {
+          let errors = [];
+          Object(validation)[propertyName].forEach(v => {
+              if (!v.validator(value)) {
+                  errors.push(v.message);
+              }
+          });
+          if (errors.length > 0) {
+              Vue.set(this.validationErrors, propertyName, errors);
+          } else {
+              Vue.delete(this.validationErrors, propertyName);
+          }
+      },
+      validateAll() {
+          this.validate("name", this.pname);
+          this.validate("category", this.pcategory);
+          this.validate("price", this.pprice);
+          return this.errors;
       }
   }
 }
