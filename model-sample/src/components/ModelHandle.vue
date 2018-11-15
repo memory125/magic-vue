@@ -222,6 +222,35 @@
             </label>        
         </div>
     </div>
+    <h1>Store Sample Snippet</h1>
+    <div class="container-fluid">
+        <div class="btn-primary m-2 p-2 text-white" v-bind:class="dataValue5">
+            Name: {{ pname }},
+            Category: {{ pcategory }},
+            Price: {{ pprice }}
+        </div>
+
+        <form v-on:submit.prevent="handleSubmit">
+            <div class="form-group">
+                <label>Name</label>
+                <input v-model="pname" class="form-control" />
+            </div>
+             <div class="form-group">
+                <label>Category</label>
+                <input v-model="pcategory" class="form-control" />
+            </div>        
+             <div class="form-group">
+                <label>Price</label>
+                <input type="number" v-model.number="pprice" class="form-control" />
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+        
+    </div>
   </div>
 </template>
 
@@ -250,7 +279,10 @@ export default {
           dataValue5: "bg-info",
           darkColor: "bg-primary",
           lightColor: "bg-info",
-          dataValue6: "bg-success"
+          dataValue6: "bg-success",
+          pname: "",
+          pcategory: "",
+          pprice: 0
       }
   },
   computed: {
@@ -285,6 +317,9 @@ export default {
       },
       reset4() {
           this.cities = [];
+      },
+      handleSubmit() {
+          //console.log("Form Submitted: " + this.pname + " - " + this.pcategory + " - " + this.pprice);
       }
   }
 }
