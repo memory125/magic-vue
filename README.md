@@ -4,7 +4,7 @@
  # Components Sample		
  * The 1st input sample with bootstrap, including Button, Text, Password, File, Checkox, Color, Date, Datetime, Email, Radio, Range, Submit, Url and Month.		
  * Add text color, background color, badge and breadcrumb sample.		
- *  Will continue to update more...
+ * Will continue to update more...
 
  # Template Data Sample
  * This sample is for data binding, which including data, computed, methods and filter properties.
@@ -17,3 +17,6 @@
 # Model Sample
 * This sample is for model binding ( one-way & two-way) or handling. e.g. form-check, form-control. form-group.
 * Add watch property.
+
+# Components Data Sample
+* This sample if for data or attributes delivery between different pages.
