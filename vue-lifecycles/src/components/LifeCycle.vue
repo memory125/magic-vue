@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
   name: 'LifeCycle',
   props: {
@@ -56,6 +58,12 @@ export default {
       doChange() {
           this.checked = !this.checked;
           this.names.reverse();
+          Vue.nextTick(() => console.log("Callback Invoked."));
+      }
+  },
+  watch: {
+      checked(newValue, oldValue) {
+          console.log("Checked Watch, Old: " + oldValue + ", New: " + newValue);
       }
   }
 }
