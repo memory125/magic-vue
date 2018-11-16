@@ -2,35 +2,61 @@
   <div class="bg-primary text-white text-center m-2 p-2 h5">
       Root Component    
       <div class="bg-primary text-white m-2 p-3">
-          {{ message }}
-      </div>  
-      <ChildComponent></ChildComponent>
-      <child-component></child-component>
+          {{ message1 }}
+      </div>
+      <!-- <ChildComponent></ChildComponent>
+      <child-component></child-component> -->
       <MyFeature labelText="Name" initialValue="Apple"></MyFeature>
       <my-feature label-text="Category" initial-value="Banana"></my-feature>
+      <div class="bg-info text-white m-2 p-3">
+          {{ message2 }}
+      </div>
+      <my-product v-bind:initial-product="product" v-on:productSubmit="updateProduct">
+          <div slot="header" class="bg-warning m-2 p-2 h3 text-dark">
+              Product Editor
+          </div>
+          <div slot="footer" class="bg-warning m-2 p-2 h3 text-dark">
+              Check Details Before Submitting
+          </div>
+      </my-product>
   </div>
 </template>
 
 <script>
-import ChildComponent from "./ChildComponent.vue"
+import ChildComponent1 from "./ChildComponent1.vue"
+import ChildComponent2 from "./ChildComponent2.vue"
+
 export default {
   name: 'ComponentsData',
   props: {
     msg: String
   },
   components: {
-      ChildComponent,
-      MyFeature: ChildComponent
+    //   ChildComponent1,
+      MyFeature: ChildComponent1,
+      MyProduct: ChildComponent2
   },
   data() {
       return {
-          message: "This is the parent component!"
+          message1: "This is the parent component!",
+          product: {
+              name: "Apple",
+              category: "Fruit",
+              price: 49.99
+          },
+          message2: ""
       }
+  },
+  methods: {
+    updateProduct(newProduct) {
+        this.message2 = JSON.stringify(newProduct);
+    }
   }
+  
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    div {border: 8px solid sandybrown}
+    div {border: 8px solid gray}
 </style>
