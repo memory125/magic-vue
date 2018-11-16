@@ -11,6 +11,11 @@
       <div class="bg-info text-white m-2 p-3">
           {{ message2 }}
       </div>
+      <my-display v-bind:product="product">
+          <div slot-scope="data" class="bg-info text-left">
+              {{ data.propname }} is {{ data.propvalue }}
+          </div>
+      </my-display>
       <my-product v-bind:initial-product="product" v-on:productSubmit="updateProduct">
           <div slot="header" class="bg-warning m-2 p-2 h3 text-dark">
               Product Editor
@@ -25,6 +30,7 @@
 <script>
 import ChildComponent1 from "./ChildComponent1.vue"
 import ChildComponent2 from "./ChildComponent2.vue"
+import ProductDisplay from "./ProductDisplay.vue"
 
 export default {
   name: 'ComponentsData',
@@ -34,7 +40,8 @@ export default {
   components: {
     //   ChildComponent1,
       MyFeature: ChildComponent1,
-      MyProduct: ChildComponent2
+      MyProduct: ChildComponent2,
+      MyDisplay: ProductDisplay
   },
   data() {
       return {
