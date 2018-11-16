@@ -24,3 +24,7 @@
 * Add the emit and props property.
 * Add slot (named) operation.
 * Add product display component.
+
+# Vue Lifecycles Sample
+* This sample is for vue component lifecycle.
+  
