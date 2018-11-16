@@ -20,3 +20,5 @@
 
 # Components Data Sample
 * This sample is for data or attributes delivery between different pages.
+* Add child 1 and child 2 component.
+* Add the emit and props property.
