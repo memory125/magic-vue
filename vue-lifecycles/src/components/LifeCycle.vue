@@ -5,6 +5,19 @@
           <label>Checkbox</label>
       </div>
       Checked Value: {{ checked }}
+      <div class="bg-info p-2">
+          Names:
+          <ul>
+              <li v-for="name in names" v-bind:key="name">
+                  {{ name }}
+              </li>
+          </ul>
+      </div>
+      <div class="text-white center my-2">
+          <button class="btn btn-light" v-on:click="doChange">
+              Change
+          </button>
+      </div>
   </div>
 </template>
 
@@ -16,7 +29,33 @@ export default {
   },
   data() {
       return {
-          checked: true
+          checked: true,
+          names: ["David", "Alice", "Peter", "Dora"]
+      }
+  },
+  beforeCreate() {
+      console.log("beforeCreate method called " + this.checked);
+  },
+  created() {
+       console.log("created method called " + this.checked);
+  },
+  mounted() {
+    //   (this.$el.dataset.names || "").split(",")
+    //   .forEach(name => this.names.push(name));
+      console.log("mounted method called " + this.checked);
+  },
+  beforeUpdate() {
+      console.log("beforeUpdate method called " + this.checked + " Name: " + 
+      this.names[0] + " List Elements: " + this.$el.getElementsByTagName("li").length);
+  },
+  updated() {
+      console.log("updated method called " + this.checked + " Name: " + 
+      this.names[0] + " List Elements: " + this.$el.getElementsByTagName("li").length);
+  },
+  methods: {
+      doChange() {
+          this.checked = !this.checked;
+          this.names.reverse();
       }
   }
 }

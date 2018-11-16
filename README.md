@@ -26,5 +26,6 @@
 * Add product display component.
 
 # Vue Lifecycles Sample
-* This sample is for vue component lifecycle.
+* This sample is for vue applicaiton lifecycle.
+* The vue applicaiton lifecycle includes: before create, created, before mount, mounted, before update, updated, activated, deactivated, before destroy, destroyed and error captured.
   
