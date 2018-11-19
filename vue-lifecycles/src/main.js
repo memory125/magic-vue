@@ -4,6 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 Vue.config.productionTip = false
 
+Vue.config.errorHandler = function(error, component, source) {
+  console.log("Global Error Handler: " + error + " " + component + " " + source);
+}
+
 new Vue({
   // el: "#app",
   // components: {App},
