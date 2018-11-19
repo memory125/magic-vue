@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
     data() {
         return {
@@ -46,13 +48,25 @@ export default {
         }
     },
     methods: {
-        createNew() {
-
+            createNew() {
+                this.eventBus.$emit("create");
+            },
+            editProduct(product) {
+                this.eventBus.$emit("edit", product);
+            },
+            processComplete(product) {
+                let index = this.products.findIndex(p => p.id == product.id);
+                if (index == -1) {
+                    this.products.push(product);
+                } else {
+                    Vue.set(this.products, index, product);
+                }
+            }
         },
-        editProduct(product) {
-
+        inject: ["eventBus"],
+        created() {
+            this.eventBus.$on("complete", this.processComplete);
         }
-    }
 }
     
 </script>

@@ -1,6 +1,7 @@
 <template>
     <div class="form-group">
-        <label>{{ label }}</label>
+        <label>{{ formattedLabel }}</label>
+        <!-- <label>{{ label }}</label> -->
         <input v-model.number="value" class="form-control"
                 v-bind:class="[colors.bg, colors.text]"/>
     </div>
@@ -8,14 +9,32 @@
 
 <script>
 export default {
-    props: ["label"],
-    data() {
-        return {
-            value: ""
+        props: ["label", "editorFor"],
+        data: function () {
+            return {
+                value: "",
+                formattedLabel: this.format(this.label)
+            }
+        },
+        inject: {
+            colors: "colors",
+            format: {
+                from: "labelFormatter",
+                default: () => (value) => `Default ${value}`
+            },
+            editingEventBus: "editingEventBus"
+        },
+        watch: {
+            value(newValue) {
+                this.editingEventBus.$emit("change",
+                    { name: this.editorFor, value: this.value});
+            }
+        },
+        created() {
+            this.editingEventBus.$on("target", 
+                (p) => this.value = p[this.editorFor]);
         }
-    },
-    inject: ["colors"]
-}    
+    }
 </script>
 
 <style scoped>
