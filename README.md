@@ -30,4 +30,5 @@
 * The vue applicaiton lifecycle includes: before create, created, before mount, mounted, before update, updated, activated, deactivated, before destroy, destroyed and error captured.
 
 # Product Sample
-* This sample is for a simple product application.  
+* This sample is for a simple product application.
+* Add product editor.  

@@ -1,7 +1,8 @@
 <template>
     <div class="form-group">
         <label>{{ label }}</label>
-        <input v-model.number="value" class="form-control" />
+        <input v-model.number="value" class="form-control"
+                v-bind:class="[colors.bg, colors.text]"/>
     </div>
 </template>
 
@@ -12,7 +13,8 @@ export default {
         return {
             value: ""
         }
-    }
+    },
+    inject: ["colors"]
 }    
 </script>
 

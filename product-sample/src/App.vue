@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="Vue logo"  class="rounded-circle mx-auto d-block" src="./assets/logo.png">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <div class="container-fluid">
       <div class="row">
@@ -26,6 +26,14 @@ export default {
     //HelloWorld,
     ProductDisplay,
     ProductEditor
+  },
+  provide() {
+    return {
+      colors: {
+        bg: "bg-secondary",
+        text: "text-white"
+      }
+    }
   }
 }
 </script>

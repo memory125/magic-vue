@@ -58,6 +58,14 @@ export default {
             this.product = {};
             this.editing = false;
         }
+    },
+    provide() {
+        return {
+            colors: {
+                bg: "bg-light",
+                text: "text-danger"
+            }
+        }
     }
 }
 </script>
