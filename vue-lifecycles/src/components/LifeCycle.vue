@@ -18,16 +18,23 @@
               Change
           </button>
       </div>
+    <div class="bg-info p-2" v-if="checked">
+        <message-display></message-display>
+    </div>  
   </div>
 </template>
 
 <script>
 import Vue from "vue";
+import MessageDisplay from './MessageDisplay.vue'
 
 export default {
   name: 'LifeCycle',
   props: {
     msg: String
+  },
+  components: {
+    MessageDisplay
   },
   data() {
       return {
