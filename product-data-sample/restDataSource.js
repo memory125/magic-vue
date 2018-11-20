@@ -2,6 +2,9 @@ import Axios from "axios";
 
 const baseUrl = "http://localhost:3500/products/";
 
+// error url
+//const baseUrl = "http://localhost:3500/hats/";
+
 export class RestDataSource {
     constructor(bus) {
         this.eventBus = bus;
