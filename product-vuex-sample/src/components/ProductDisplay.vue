@@ -39,15 +39,16 @@
 
 <script>
 import Vue from "vue";
-//import Axios from "axios";
-
-//const baseUrl = "http://localhost:3500/products/";
-
 
 export default {
-    data() {
-        return {
-            products: []
+    // data() {
+    //     return {
+    //         products: []
+    //     }
+    // },
+    computed: {
+        products() {
+            return this.$store.getters.filteredProducts(33);
         }
     },
     filters: {
@@ -57,42 +58,18 @@ export default {
     },
     methods: {
             createNew() {
-                this.eventBus.$emit("create");
+                
             },
             editProduct(product) {
-                this.eventBus.$emit("edit", product);
             },
-            async deleteProduct(product) {
-                await this.restDataSource.deleteProduct(product);
-                let index = this.products.findIndex(p => p.id == product.id);
-                this.products.splice(index, 1);
+            deleteProduct(product) {
+                this.$store.commit("deleteProduct", product);
             },
             processProducts(newProducts) {
                 this.products.splice(0);
                 this.products.push(...newProducts);
-            },
-            async processComplete(product) {
-                let index = this.products.findIndex(p => p.id == product.id);
-                if (index == -1) {
-                    await this.restDataSource.saveProduct(product);
-                } else {
-                    await this.restDataSource.updataProduct(product);
-                    Vue.set(this.products, index, product);
-                }
             }
-    },           
-    inject: ["eventBus", "restDataSource"],
-    async created() {
-        // Axios.get(baseUrl).then(resp => {
-        //     this.processProducts(resp.data);
-        //     console.log("HTTP Response: " + resp.status + " " + resp.statusText);
-        //     console.log("Response Data: " + resp.data.length + " items");
-        // });
-        // let data = (await Axios.get(baseUrl)).data;
-        // this.processProducts(data);
-        this.processProducts(await this.restDataSource.getProducts());
-        this.eventBus.$on("complete", this.processComplete);
-   },
+    }      
 }
     
 </script>
