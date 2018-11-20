@@ -32,3 +32,6 @@
 # Product Sample
 * This sample is for a simple product application.
 * Add product editor.  
+
+# Product Data Sample
+* This sample is based on Product Sample, and adding new feature to get data via REST API.
