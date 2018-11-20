@@ -17,6 +17,9 @@
                         <button class="btn btn-sm btn-primary" v-on:click="editProduct(p)">
                             Edit
                         </button>
+                        <button class="btn btn-sm btn-danger" v-on:click="deleteProduct(p)">
+                            Delete
+                        </button>
                     </td>
                 </tr>
                 <tr v-if="products.length == 0">
@@ -59,9 +62,23 @@ export default {
             editProduct(product) {
                 this.eventBus.$emit("edit", product);
             },
+            async deleteProduct(product) {
+                await this.restDataSource.deleteProduct(product);
+                let index = this.products.findIndex(p => p.id == product.id);
+                this.products.splice(index, 1);
+            },
             processProducts(newProducts) {
                 this.products.splice(0);
                 this.products.push(...newProducts);
+            },
+            async processComplete(product) {
+                let index = this.products.findIndex(p => p.id == product.id);
+                if (index == -1) {
+                    await this.restDataSource.saveProduct(product);
+                } else {
+                    await this.restDataSource.updataProduct(product);
+                    Vue.set(this.products, index, product);
+                }
             }
     },           
     inject: ["eventBus", "restDataSource"],
@@ -74,6 +91,7 @@ export default {
         // let data = (await Axios.get(baseUrl)).data;
         // this.processProducts(data);
         this.processProducts(await this.restDataSource.getProducts());
+        this.eventBus.$on("complete", this.processComplete);
    },
 }
     
