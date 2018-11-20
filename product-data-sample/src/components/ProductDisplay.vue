@@ -36,6 +36,10 @@
 
 <script>
 import Vue from "vue";
+//import Axios from "axios";
+
+//const baseUrl = "http://localhost:3500/products/";
+
 
 export default {
     data() {
@@ -54,9 +58,23 @@ export default {
             },
             editProduct(product) {
                 this.eventBus.$emit("edit", product);
+            },
+            processProducts(newProducts) {
+                this.products.splice(0);
+                this.products.push(...newProducts);
             }
     },           
-    inject: ["eventBus"]  
+    inject: ["eventBus", "restDataSource"],
+    async created() {
+        // Axios.get(baseUrl).then(resp => {
+        //     this.processProducts(resp.data);
+        //     console.log("HTTP Response: " + resp.status + " " + resp.statusText);
+        //     console.log("Response Data: " + resp.data.length + " items");
+        // });
+        // let data = (await Axios.get(baseUrl)).data;
+        // this.processProducts(data);
+        this.processProducts(await this.restDataSource.getProducts());
+   },
 }
     
 </script>
