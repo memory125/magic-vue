@@ -35,3 +35,6 @@
 
 # Product Data Sample
 * This sample is based on Product Sample, and adding new feature to get data via REST API.
+
+# Product Vuex Sample
+* This sample is based on Product Data Sample, and adding new feature implemented via Vuex.
