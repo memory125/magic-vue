@@ -38,3 +38,6 @@
 
 # Product Vuex Sample
 * This sample is based on Product Data Sample, and adding new feature implemented via Vuex.
+
+# Product Dynamic Sample
+* This sample is based on Product Vuex sample, and add new feature for dyanamic display component.
