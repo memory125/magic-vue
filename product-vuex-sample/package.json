@@ -1,5 +1,5 @@
 {
-  "name": "product-data-sample",
+  "name": "product-vuex-sample",
   "version": "0.1.0",
   "private": true,
   "scripts": {

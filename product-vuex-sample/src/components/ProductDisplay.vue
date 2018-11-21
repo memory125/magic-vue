@@ -48,7 +48,8 @@ export default {
     // },
     computed: {
         products() {
-            return this.$store.getters.filteredProducts(33);
+           // return this.$store.getters.filteredProducts(33);
+           return this.$store.state.products;
         }
     },
     filters: {
@@ -58,18 +59,22 @@ export default {
     },
     methods: {
             createNew() {
-                
+                this.$store.commit("selectProduct");
             },
             editProduct(product) {
+                 this.$store.commit("selectProduct", product);
             },
             deleteProduct(product) {
-                this.$store.commit("deleteProduct", product);
+                this.$store.commit("deleteProductAction", product);
             },
             processProducts(newProducts) {
                 this.products.splice(0);
                 this.products.push(...newProducts);
             }
-    }      
+    },
+    created() {
+        this.$store.dispatch("getProductsAction");
+    },    
 }
     
 </script>
