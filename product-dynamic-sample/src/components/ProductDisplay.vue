@@ -72,10 +72,12 @@ export default {
     },
     methods: {
             ...mapMutations({
-                editProduct: "selectProduct",
-                createNew: "selectProduct",
+                selectProduct: "selectProduct",
+                selectComponent: "nav/selectComponent",
+                //editProduct: "selectProduct",
+               // createNew: "selectProduct",
                 setEditButtonColor: "prefs/setEditButtonColor",
-                setDeleteButtonColor: "prefs/setDeleteButtonColor"
+                setDeleteButtonColor: "prefs/setDeleteButtonColor"              
             }),
            // ...mapMutations("setEditButtonColor", "setDeleteButtonColor"),
             ...mapActions({
@@ -83,10 +85,12 @@ export default {
                 deleteProduct: "deleteProductAction"
             }),
             createNew() {
-                this.$store.commit("selectProduct");
+                this.selectProduct();
+                this.selectComponent("editor");
             },
             editProduct(product) {
-                 this.$store.commit("selectProduct", product);
+                this.selectProduct(product);
+                this.selectComponent("editor");
             },
             deleteProduct(product) {
                 this.$store.commit("deleteProductAction", product);
@@ -100,7 +104,7 @@ export default {
         //this.$store.dispatch("getProductsAction");
         //this.getProducts();
         this.setEditButtonColor(false);
-        this.setsetDeleteButtonColor(false);
+        this.setDeleteButtonColor(false);
     },    
 }
     

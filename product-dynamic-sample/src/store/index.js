@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import Axios from "axios";
 import PrefsModule from "./preferences";
+import NavModule from "./navigation";
 
 Vue.use(Vuex);
 
@@ -9,7 +10,8 @@ const baseUrl = "http://localhost:3500/products/";
 
 export default new Vuex.Store({
     modules: {
-        prefs: PrefsModule
+        prefs: PrefsModule,
+        nav: NavModule
     },
     state: {
         // products: [
