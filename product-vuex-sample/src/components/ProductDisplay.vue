@@ -1,6 +1,6 @@
 <template>
     <div>
-        <table class="table table-sm table-striped table-bordered">
+        <table class="table table-sm table-striped table-bordered" v-bind:class="tableClass">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -14,10 +14,10 @@
                     <td>{{ p.category }}</td>
                     <td>{{ p.price | currency }}</td>
                     <td>
-                        <button class="btn btn-sm btn-primary" v-on:click="editProduct(p)">
+                        <button class="btn btn-sm" v-bind:class="editClass" v-on:click="editProduct(p)">
                             Edit
                         </button>
-                        <button class="btn btn-sm btn-danger" v-on:click="deleteProduct(p)">
+                        <button class="btn btn-sm" v-bind:class="deleteClass" v-on:click="deleteProduct(p)">
                             Delete
                         </button>
                     </td>
@@ -30,7 +30,7 @@
             </tbody>
         </table>
         <div class="text-center">
-            <button class="btn btn-primary" v-on:click="createNew">
+            <button class="btn btn-primary" v-on:click="createNew()">
                 Create New
             </button>
         </div>
@@ -38,7 +38,8 @@
 </template>
 
 <script>
-import Vue from "vue";
+
+import {mapState, mapMutations, mapActions, mapGetters} from "vuex";
 
 export default {
     // data() {
@@ -47,10 +48,12 @@ export default {
     //     }
     // },
     computed: {
-        products() {
-           // return this.$store.getters.filteredProducts(33);
-           return this.$store.state.products;
-        }
+        // products() {
+        //    // return this.$store.getters.filteredProducts(33);
+        //    return this.$store.state.products;
+        // },
+        ...mapState(["products"]),
+        ...mapGetters(["tableClass", "editClass", "deleteClass"])
     },
     filters: {
         currency(value) {
@@ -58,6 +61,15 @@ export default {
         }
     },
     methods: {
+            ...mapMutations({
+                editProduct: "selectProduct",
+                createNew: "selectProduct"
+            }),
+            ...mapMutations("setEditButtonColor", "setDeleteButtonColor"),
+            ...mapActions({
+                getProducts: "getProductsAction",
+                deleteProduct: "deleteProductAction"
+            }),
             createNew() {
                 this.$store.commit("selectProduct");
             },
@@ -73,7 +85,10 @@ export default {
             }
     },
     created() {
-        this.$store.dispatch("getProductsAction");
+        //this.$store.dispatch("getProductsAction");
+        this.getProducts();
+        this.setEditButtonColor(false);
+        this.setsetDeleteButtonColor(false);
     },    
 }
     

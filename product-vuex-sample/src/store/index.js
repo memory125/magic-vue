@@ -1,12 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import Axios from "axios";
+import PrefsModule from "./preferences";
 
 Vue.use(Vuex);
 
 const baseUrl = "http://localhost:3500/products/";
 
 export default new Vuex.Store({
+    modules: {
+        prefs: PrefsModule
+    },
     state: {
         // products: [
         //     {id: 1, name: "Apple", category: "Fruit", price: 34.88},
