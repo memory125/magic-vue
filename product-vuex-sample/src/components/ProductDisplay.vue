@@ -1,6 +1,8 @@
 <template>
     <div>
-        <table class="table table-sm table-striped table-bordered" v-bind:class="tableClass">
+        <!-- <table class="table table-sm table-striped table-bordered" v-bind:class="tableClass"> -->
+        <table class="table table-sm table-striped table-bordered" 
+            v-bind:class="'table-striped' == useStripedTable">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -53,7 +55,15 @@ export default {
         //    return this.$store.state.products;
         // },
         ...mapState(["products"]),
-        ...mapGetters(["tableClass", "editClass", "deleteClass"])
+        ...mapState({
+            useStripedTable: state => state.prefs.stripedTable
+        }),
+        //...mapGetters(["tableClass", "editClass", "deleteClass"]),
+        ...mapGetters({
+            tableClass: "prefs/tableClass", 
+            editClass: "prefs/editClass", 
+            deleteClass: "prefs/deleteClass"
+            })
     },
     filters: {
         currency(value) {
@@ -63,9 +73,11 @@ export default {
     methods: {
             ...mapMutations({
                 editProduct: "selectProduct",
-                createNew: "selectProduct"
+                createNew: "selectProduct",
+                setEditButtonColor: "prefs/setEditButtonColor",
+                setDeleteButtonColor: "prefs/setDeleteButtonColor"
             }),
-            ...mapMutations("setEditButtonColor", "setDeleteButtonColor"),
+           // ...mapMutations("setEditButtonColor", "setDeleteButtonColor"),
             ...mapActions({
                 getProducts: "getProductsAction",
                 deleteProduct: "deleteProductAction"

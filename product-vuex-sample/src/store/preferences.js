@@ -1,4 +1,5 @@
 export default {
+    namespaced: true,
     state: {
         stripedTable: true,
         primaryEditButton: false,
