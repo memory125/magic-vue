@@ -1,5 +1,5 @@
-# magic vue: product dynamic sample
-* This repo is upgraded product data sample, adding new feature for dynamic display component.
+# magic vue: product router sample
+* This repo is upgraded product dynamic sample, adding new feature implemented via Vue-Router.
 
 ## Project setup
 ```

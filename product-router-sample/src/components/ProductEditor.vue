@@ -20,6 +20,9 @@
         <button class="btn btn-primary" v-on:click="save">
             {{editing ? "Save" : "Create"}}
         </button>
+        <router-link to="/" class="btn btn-secondary">
+            Cancel
+        </router-link>
     </div>
 </div>
 </template>
@@ -37,12 +40,9 @@
         methods: {       
             async save() {     
                 await this.$store.dispatch("saveProductAction", this.product);
-                this.$store.commit("nav/selectComponent", "table");
+               
+                this.$router.push("/");
                 this.product = {};           
-            },
-            cancel() {          
-                this.$store.commit("selectProduct");     
-                this.$store.commit("nav/selectComponent", "table");
             },
             selectProduct(selectedProduct) {
                 if (selectedProduct == null) {
@@ -54,7 +54,7 @@
                     Object.assign(this.product, selectedProduct);
                 }
             }
-        },       
+        },
         created() {
             unwatcher = this.$store.watch(state =>
                 state.selectedProduct, this.selectProduct);

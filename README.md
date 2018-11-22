@@ -41,3 +41,6 @@
 
 # Product Dynamic Sample
 * This sample is based on Product Vuex sample, and add new feature for dyanamic display component.
+
+# Product Router Sample
+* This sample is based on Product Dynamic sample, add new feature implemented via Vue-Router.
