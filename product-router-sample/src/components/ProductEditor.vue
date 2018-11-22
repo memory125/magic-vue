@@ -1,5 +1,8 @@
 <template>
 <div>
+    <h3 class="btn-primary text-center text-white p-2">
+         {{editing ? "Edit" : "Create"}}
+    </h3>
     <div class="form-group">
         <label>ID</label>
         <input class="form-control" v-model="product.id" />
@@ -44,21 +47,23 @@
                 this.$router.push("/");
                 this.product = {};           
             },
-            selectProduct(selectedProduct) {
-                if (selectedProduct == null) {
+            selectProduct() {                
+                if (this.$route.path == "/create") {
                     this.editing = false;
                     this.product = {};
-                } else {
-                    this.editing = true;
+                } else {        
+                    let productId = this.$route.params.id;
+                    let selectedProduct = this.$store.state.products.find(p => p.id == productId);        
                     this.product = {};
                     Object.assign(this.product, selectedProduct);
+                    this.editing = true;
+                    console.log(selectedProduct);
                 }
             }
         },
         created() {
-            unwatcher = this.$store.watch(state =>
-                state.selectedProduct, this.selectProduct);
-            this.selectProduct(this.$store.state.selectedProduct);
+            unwatcher = this.$store.watch(state => state.products, this.selectProduct);
+            this.selectProduct();
         },
         beforeDestroy() {
             unwatcher();

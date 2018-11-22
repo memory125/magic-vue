@@ -16,9 +16,9 @@
                     <td>{{ p.category }}</td>
                     <td>{{ p.price | currency }}</td>
                     <td>
-                        <button class="btn btn-sm" v-bind:class="editClass" v-on:click="editProduct(p)">
+                        <router-link v-bind:to="'/edit/' + p.id" class="btn btn-sm" v-bind:class="editClass">
                             Edit
-                        </button>
+                        </router-link>
                         <button class="btn btn-sm" v-bind:class="deleteClass" v-on:click="deleteProduct(p)">
                             Delete
                         </button>
@@ -32,9 +32,9 @@
             </tbody>
         </table>
         <div class="text-center">
-            <button class="btn btn-primary" v-on:click="createNew()">
+            <router-link to="/create" class="btn btn-primary">
                 Create New
-            </button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -63,7 +63,7 @@ export default {
     methods: {
             ...mapMutations({
                 selectProduct: "selectProduct",
-                selectComponent: "nav/selectComponent",
+                //selectComponent: "nav/selectComponent",
                 setEditButtonColor: "prefs/setEditButtonColor",
                 setDeleteButtonColor: "prefs/setDeleteButtonColor"              
             }),
@@ -75,7 +75,8 @@ export default {
                 this.$router.push("/edit");
             },
             editProduct(product) {
-                this.selectProduct(product);
+                console.log("ProductDisplay" + product);
+                this.selectProduct();
                 this.$router.push("/edit");
             },
             deleteProduct(product) {
