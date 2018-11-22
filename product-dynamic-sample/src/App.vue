@@ -13,7 +13,7 @@
           <button class="btn btn-primary" v-on:click="selectComponent('table')">
             Stanard Features
           </button>
-          <button class="btn btn-primary" v-on:click="selectComponent('summary')">
+          <button class="btn btn-success" v-on:click="selectComponent('summary')">
             Advanced Features
           </button>
         </div>
@@ -48,8 +48,13 @@
 import ProductDisplay from "./components/ProductDisplay.vue"
 import ProductEditor from "./components/ProductEditor.vue"
 import ErrorDisplay from "./components/ErrorDisplay.vue"
+import LoadingMessage from "./components/LoadingMessage.vue"
 
-const DataSummary = () => import("./components/DataSummary.vue");
+const DataSummary = () => ({
+    component: import("./components/DataSummary.vue"),
+    loading: LoadingMessage,
+    delay: 100
+  });
 
 import {mapState, mapMutations} from "vuex";
 
@@ -60,7 +65,8 @@ export default {
     ProductDisplay,
     ProductEditor,
     ErrorDisplay,
-    DataSummary
+    DataSummary,
+    LoadingMessage
   },
   // data() {
   //   return {
