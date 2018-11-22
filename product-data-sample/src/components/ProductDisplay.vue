@@ -6,6 +6,7 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th></th>
             </tr>
             <tbody>
                 <tr v-for="p in products" v-bind:key="p.id">

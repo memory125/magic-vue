@@ -8,6 +8,7 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th></th>
             </tr>
             <tbody>
                 <tr v-for="p in products" v-bind:key="p.id">
@@ -16,10 +17,10 @@
                     <td>{{ p.category }}</td>
                     <td>{{ p.price | currency }}</td>
                     <td>
-                        <router-link v-bind:to="'/edit/' + p.id" class="btn btn-sm" v-bind:class="editClass">
+                        <router-link v-bind:to="'/edit/' + p.id" class="btn btn-sm m-1" v-bind:class="editClass">
                             Edit
                         </router-link>
-                        <button class="btn btn-sm" v-bind:class="deleteClass" v-on:click="deleteProduct(p)">
+                        <button class="btn btn-sm m-1" v-bind:class="deleteClass" v-on:click="deleteProduct(p)">
                             Delete
                         </button>
                     </td>

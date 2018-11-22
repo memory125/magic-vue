@@ -23,7 +23,7 @@
         <button class="btn btn-primary" v-on:click="save">
             {{editing ? "Save" : "Create"}}
         </button>
-        <router-link to="/" class="btn btn-secondary">
+        <router-link v-bind:to="{name: 'table'}" class="btn btn-secondary">
             Cancel
         </router-link>
     </div>
@@ -42,13 +42,14 @@
         },       
         methods: {       
             async save() {     
-                await this.$store.dispatch("saveProductAction", this.product);
-               
-                this.$router.push("/");
+                await this.$store.dispatch("saveProductAction", this.product);               
+                //this.$router.push("/");
+                this.$router.push({name: "table"});
                 this.product = {};           
             },
             selectProduct() {                
-                if (this.$route.path == "/create") {
+                //if (this.$route.path == "/create") {
+                if (this.$route.params.op == "create") {
                     this.editing = false;
                     this.product = {};
                 } else {        
