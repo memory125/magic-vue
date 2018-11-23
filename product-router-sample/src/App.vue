@@ -21,8 +21,14 @@
              <router-link tag="button" to="/products" active-class="btn-info" class="btn btn-primary" >
                 Products
              </router-link>
-              <router-link tag="button" to="/preferences" active-class="btn-info" class="btn btn-primary" >
+             <router-link tag="button" to="/preferences" active-class="btn-info" class="btn btn-primary" >
                 Preferences
+             </router-link>
+             <router-link to="/named/tableleft" active-class="btn-info" class="btn btn-primary" >
+                Table Left
+             </router-link>
+             <router-link to="/named/tableright" active-class="btn-info" class="btn btn-primary" >
+                Table Right
              </router-link>
           </div>
         </div>
