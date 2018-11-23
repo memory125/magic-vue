@@ -11,11 +11,19 @@
             <router-link tag="li" event="mouseenter" to="/edit" class="m-1" exact>Edit</router-link>
             <router-link tag="li" event="mouseenter" to="/edit/1" class="m-1">Edit Apple</router-link>
           </ol> -->
-          <div class="btn-group">
+          <!-- <div class="btn-group">
             <router-link tag="button" event="mouseenter" to="/list" exact-active-class="btn-info" class="btn btn-secondary" >List</router-link>
             <router-link tag="button" event="mouseenter" to="/create" exact-active-class="btn-info" class="btn btn-secondary">Create</router-link>
             <router-link tag="button" event="mouseenter" to="/edit" exact-active-class="btn-info" class="btn btn-secondary" exact>Edit</router-link>
             <router-link tag="button" event="mouseenter" to="/edit/1" exact-active-class="btn-info" class="btn btn-secondary">Edit Apple</router-link>
+          </div> -->
+          <div class="btn-group">
+             <router-link tag="button" to="/products" active-class="btn-info" class="btn btn-primary" >
+                Products
+             </router-link>
+              <router-link tag="button" to="/preferences" active-class="btn-info" class="btn btn-primary" >
+                Preferences
+             </router-link>
           </div>
         </div>
       </div>
