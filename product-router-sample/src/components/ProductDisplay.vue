@@ -90,10 +90,10 @@ export default {
                 this.products.push(...newProducts);
             }
     },
-    created() {
-        this.setEditButtonColor(false);
-        this.setDeleteButtonColor(false);
-    },    
+    // created() {
+    //     this.setEditButtonColor(false);
+    //     this.setDeleteButtonColor(false);
+    // },    
 }
     
 </script>

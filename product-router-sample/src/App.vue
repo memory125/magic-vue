@@ -4,6 +4,22 @@
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <div class="container-fluid">   
       <div class="row">
+        <div class="col text-center m-2">
+          <!-- <ol>
+            <router-link tag="li" event="mouseenter" to="/list" class="m-1" >List</router-link>
+            <router-link tag="li" event="mouseenter" to="/create" class="m-1">Create</router-link>
+            <router-link tag="li" event="mouseenter" to="/edit" class="m-1" exact>Edit</router-link>
+            <router-link tag="li" event="mouseenter" to="/edit/1" class="m-1">Edit Apple</router-link>
+          </ol> -->
+          <div class="btn-group">
+            <router-link tag="button" event="mouseenter" to="/list" exact-active-class="btn-info" class="btn btn-secondary" >List</router-link>
+            <router-link tag="button" event="mouseenter" to="/create" exact-active-class="btn-info" class="btn btn-secondary">Create</router-link>
+            <router-link tag="button" event="mouseenter" to="/edit" exact-active-class="btn-info" class="btn btn-secondary" exact>Edit</router-link>
+            <router-link tag="button" event="mouseenter" to="/edit/1" exact-active-class="btn-info" class="btn btn-secondary">Edit Apple</router-link>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col m-2">
            <router-view></router-view>
         </div>       
@@ -71,13 +87,9 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  /* font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px; */
-}
+<style scoped>
+router-link {text-align: right;  color: yellow; background-color: red;}
+li {text-align: left; color: blue; background-color: lightblue}
+.router-link-active {font-size: xx-large;}
+.router-link-exact-active {font-weight: bolder;}
 </style>

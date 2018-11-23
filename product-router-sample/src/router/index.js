@@ -10,7 +10,7 @@ export default new VueRouter({
     mode: "history",
     routes: [
         //{path: "/", component: ProductDisplay},
-        //{path: "/", component: ProductDisplay, alias: "/list"},
+        {path: "/", component: ProductDisplay, alias: "/list"},
         //{path: "/edit/:id", component: ProductEditor},
         //{path: "/create", component: ProductEditor},
         //{path: "/:op(create|edit)/:id(\\d+)?", component: ProductEditor},
