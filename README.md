@@ -47,3 +47,6 @@
 
 # Advanced Url Route
 * This sample is based on Product Router sample, add new feature on Url routing.
+
+# Transitions Sample
+* This sample is for transitions feature.
