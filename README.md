@@ -44,3 +44,6 @@
 
 # Product Router Sample
 * This sample is based on Product Dynamic sample, add new feature implemented via Vue-Router.
+
+# Advanced Url Route
+* This sample is based on Product Router sample, add new feature on Url routing.
