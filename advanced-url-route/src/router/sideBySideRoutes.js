@@ -6,14 +6,14 @@ export default {
     path: "/named", component: SideBySide,
     children: [
         {
-            path: "tableLeft", 
+            path: "tableleft", 
             components: {
                 left: ProductDisplay,
                 right: ProductEditor
             }
         },
         {
-            path: "tableRight", 
+            path: "tableright", 
             components: {
                 left: ProductEditor,
                 right: ProductDisplay

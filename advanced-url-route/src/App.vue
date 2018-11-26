@@ -18,12 +18,18 @@
              <router-link to="/named/tableright" active-class="btn-info" class="btn btn-primary" >
                 Table Right
              </router-link>
+             <router-link to="/filter/All" active-class="btn-info" class="btn btn-primary" >
+                Filtered Data
+             </router-link>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col m-2">
-           <router-view></router-view>
+          <h3 class="bg-warning text-white text-center p-2" v-if="componentLoading">
+            Loading Component...
+          </h3>
+           <router-view v-show="!componentLoading"></router-view>
         </div>       
       </div>            
     </div>   
@@ -31,9 +37,13 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
 
 export default {
   name: 'app',
+  computed: {
+    ...mapState(["componentLoading"]),
+  },
   created() {
     this.$store.dispatch("getProductsAction");
   },  
