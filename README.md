@@ -50,3 +50,6 @@
 
 # Transitions Sample
 * This sample is for transitions feature.
+
+# Extending Vue Sample
+* This sample is for extending vue features.
