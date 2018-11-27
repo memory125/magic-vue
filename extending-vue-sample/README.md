@@ -1,6 +1,6 @@
 # magic vue: extending vue sample
 * This sample is for extending vue features.
-*  
+  
 ## Project setup
 ```
 npm install
