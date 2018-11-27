@@ -1,9 +1,12 @@
 <template>
     <div class="mx-5 border border-dark p-2">
         <h3 class="bg-warning text-white text-center p-2">Display</h3>
-        <transition enter-to-class="fadeIn" leave-to-class="fadeOut">
-            <div v-if="show" class="animated h4 bg-info text-center p-2">
+        <transition enter-to-class="fadeIn" leave-to-class="fadeOut" mode="out-in">
+            <div v-if="show" class="animated h4 bg-info text-center p-2" key="hello">
                 Hello, David
+            </div>
+            <div v-else class="animated h4 bg-success text-center p-2" key="goodbye">
+                Goodbye, David
             </div>
         </transition>
         
