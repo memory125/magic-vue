@@ -5,13 +5,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <input v-colorize="first > 45" class="form-control" v-model.number="first" />
+                    <input v-colorize:bg-info.bg="first > 45" class="form-control" v-model.number="first" />
                 </div>   
                 <div class="col-1 h3">+</div>  
                 <div class="col">
-                    <input class="form-control" v-model.number="second" />
+                    <input  v-colorize:bg-info="second > 30" class="form-control" v-model.number="second" />
                 </div>           
-                <div v-colorize="total > 50" class="col h3">= {{ total }}</div>                  
+                <div v-colorize.bg.text="total > 50" class="col h3">= {{ total }}</div>                  
             </div> 
         </div>
     </div>
