@@ -3,18 +3,21 @@
     <img alt="Vue logo" class="rounded-circle mx-auto d-block" src="./assets/logo.png">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Numbers />
+    <Subtraction />
   </div>
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
 import Numbers from "./components/Numbers.vue"
+import Subtraction from './components/Subtraction.vue'
 
 export default {
   name: 'app',
   components: {
     //HelloWorld,
-    Numbers
+    Numbers,
+    Subtraction
   }
 }
 </script>

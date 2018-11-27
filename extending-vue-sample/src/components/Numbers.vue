@@ -19,23 +19,15 @@
 
 <script>
     
-    import Colorize from "../directives/colorize";
+    import mixin from "../mixins/numbersMixin";
 
-    export default {
-        data() {
-            return {
-                first: 10,
-                second: 20                
-            }
-        },
+    export default {      
         computed: {
             total() {
                return this.first + this.second;
             }
         },
-        directives: {
-            Colorize
-        }
+       mixins: [mixin]
     }
 
 </script>
