@@ -1,7 +1,7 @@
 <template>
     <div class="mx-5 border border-dark p-2">
         <h3 class="bg-warning text-white text-center p-2">Display</h3>
-        <transition enter-to-class="fadeIn" leave-to-class="fadeOut" mode="out-in">
+        <transition enter-to-class="fadeIn quick" leave-to-class="fadeOut quick" mode="out-in">
             <div v-if="show" class="animated h4 bg-info text-center p-2" key="hello">
                 Hello, David
             </div>
@@ -50,5 +50,9 @@
         opacity: 1;
         font-size: x-large;
         transition: all 250ms;
+    }
+
+    .quick {
+        animation-duration: 500ms;
     }
 </style>

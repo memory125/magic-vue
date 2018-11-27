@@ -8,7 +8,8 @@
                 <th>Item</th>
                 <th width="20%" colspan="2"></th>
             </tr>
-            <tr v-for="(item, i) in items" v-bind:key="item">
+            <transition-group enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" move-class="time" tag="tbody">
+                <tr v-for="(item, i) in items" v-bind:key="item">
                 <td>{{ i }}</td>
                 <td>{{ item }}</td>
                 <td>
@@ -20,6 +21,8 @@
                     </button>
                 </td>
             </tr>
+            </transition-group>
+          
             <controls v-on:add="addItem" />
         </table>
     </div>
@@ -50,3 +53,9 @@
     }
 
 </script>
+
+<style scoped>
+    .time {
+        transition: all 250ms;
+    }
+</style>
