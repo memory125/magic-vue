@@ -4,6 +4,7 @@
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Numbers />
     <Subtraction />
+    <maths operation="Divide" firstVal="20" secondVal="5" />
   </div>
 </template>
 
