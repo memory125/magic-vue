@@ -9,7 +9,13 @@ npm install
 ### Compiles and hot-reloads for developmentls
 
 ```
+Step 1. Launching the data server.
+npm run json
+```
+```
+Step 2. Launching the web app.
 npm run serve
+```un serve
 ```
 
 ### Compiles and minifies for production
