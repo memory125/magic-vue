@@ -15,7 +15,6 @@ npm run json
 ```
 Step 2. Launching the web app.
 npm run serve
-```un serve
 ```
 
 ### Compiles and minifies for production
