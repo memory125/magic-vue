@@ -1,5 +1,13 @@
 # magic vue.js
  * This is for vue.js projects, which is amazing and full of magic.
+ 
+ # Create Vue App
+ * Install `vue-cli` via the following command.
+ 	`npm install -g vue-cli`
+* Create `vue app` via the following command.
+	`vue create project-name`
+* If you want to create the default project, then the command is
+	`vue create prooject-name --default`
 		
  # Components Sample		
  * The 1st input sample with bootstrap, including Button, Text, Password, File, Checkox, Color, Date, Datetime, Email, Radio, Range, Submit, Url and Month.		
